@@ -22,6 +22,7 @@ for (var i of preset_order) {
 function App() {
   const [order, setOrder] = useState(preset_order);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [clicked, setClicked] = useState({});
 
   function shuffle(oldArray) {
@@ -48,7 +49,9 @@ function App() {
 
   function newOrder(i) {
     if (undefined === clicked[i]) {
-      setScore(score + 1);
+      const newScore = score + 1;
+      setScore(newScore);
+      setHighScore((highScore) => Math.max(highScore, newScore));
       setClicked({ ...clicked, [i]: true });
     } else {
       setScore(0);
@@ -60,6 +63,7 @@ function App() {
   return (
     <>
       <p>Score: {score}</p>
+      <p>Highscore: {highScore}</p>
       <section id="center">
         {order.map((i) => (
           <Card
