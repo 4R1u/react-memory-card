@@ -14,6 +14,9 @@ for (var i of preset_order) {
     .then((result) => result);
 
   pokes[i] = { name: obj["name"], image: obj["sprites"]["front_default"] };
+  // make registeel shiny just because
+  if ("registeel" == pokes[i]["name"].toLowerCase())
+    pokes[i]["image"] = obj["sprites"]["front_shiny"];
 }
 
 function App() {
