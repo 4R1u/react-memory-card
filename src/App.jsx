@@ -20,9 +20,9 @@ for (var i of FIRST_ORDER) {
     name: obj["name"],
     image: obj["sprites"]["front_default"],
   };
-  // make registeel shiny just because
+  // make registeel special just because
   if ("registeel" == pokes[i]["name"].toLowerCase())
-    pokes[i]["image"] = obj["sprites"]["front_shiny"];
+    pokes[i]["image"] = obj["sprites"]["other"]["home"]["front_shiny"];
 }
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
 
           // make registeel shiny just because
           if ("registeel" == pokes[i]["name"].toLowerCase())
-            pokes[i]["image"] = obj["sprites"]["front_shiny"];
+            pokes[i]["image"] = obj["sprites"]["other"]["home"]["front_shiny"];
         }
       };
 
