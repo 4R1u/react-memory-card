@@ -21,6 +21,8 @@ for (var i of preset_order) {
 
 function App() {
   const [order, setOrder] = useState(preset_order);
+  const [score, setScore] = useState(0);
+  const [clicked, setClicked] = useState({});
 
   function shuffle(oldArray) {
     var array = [];
@@ -44,17 +46,25 @@ function App() {
     return array;
   }
 
-  function randomize() {
+  function newOrder(i) {
+    if (undefined === clicked[i]) {
+      setScore(score + 1);
+      setClicked({ ...clicked, [i]: true });
+    } else {
+      setScore(0);
+      setClicked({});
+    }
     setOrder(shuffle(order));
   }
 
   return (
     <>
+      <p>Score: {score}</p>
       <section id="center">
         {order.map((i) => (
           <Card
             key={i}
-            callback={randomize}
+            callback={(e) => newOrder(i)}
             image={pokes[i]["image"]}
             name={pokes[i]["name"]}
           />
