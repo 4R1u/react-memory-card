@@ -1,9 +1,9 @@
 function Card({ image, callback, name }) {
   return (
-    <div className="card" onClick={callback}>
+    <button className="card" onClick={callback}>
       <img src={image}></img>
       <p>{name}</p>
-    </div>
+    </button>
   );
 }
 
